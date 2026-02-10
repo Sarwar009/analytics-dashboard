@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
-type DateRange = '7days' | '30days' | '12months';
-type UserType = 'all' | 'free' | 'premium' | 'enterprise';
+export type DateRange = '7days' | '30days' | '12months';
+export type UserType = 'all' | 'free' | 'premium' | 'enterprise';
 
 interface FilterState {
   dateRange: DateRange;
@@ -13,7 +13,6 @@ interface FilterState {
 export const useFilterStore = create<FilterState>((set) => ({
   dateRange: '12months',
   userType: 'all',
-
   setDateRange: (range) => set({ dateRange: range }),
   setUserType: (type) => set({ userType: type }),
 }));

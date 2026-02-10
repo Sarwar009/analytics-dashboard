@@ -1,36 +1,32 @@
 import { KPI } from '@/types/dashboard';
+import { memo } from 'react';
 
 interface Props {
   data: KPI;
 }
 
-export default function KpiCard({ data }: Props) {
-  const isPositive = data.change >= 0;
+function KpiCard({ data }: Props) {
+  const positive = data.change >= 0;
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition">
-      
-      <p className="text-gray-500 text-sm">
-        {data.title}
-      </p>
+    <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
+      <p className="text-gray-500 text-sm">{data.title}</p>
 
+      {/* Format number with commas */}
       <h3 className="text-2xl font-bold mt-2">
-        {data.value}
+        {data.value.toLocaleString()}
       </h3>
 
-      <div className="flex items-center gap-2 mt-4">
-        <span
-          className={`text-sm font-medium ${
-            isPositive ? 'text-green-600' : 'text-red-600'
-          }`}
-        >
-          {isPositive ? '▲' : '▼'} {Math.abs(data.change)}%
-        </span>
-        <span className="text-xs text-gray-400">
-          vs last period
-        </span>
-      </div>
-
+      <span
+        className={`text-sm mt-3 inline-block ${
+          positive ? 'text-green-600' : 'text-red-600'
+        }`}
+      >
+        {positive ? '▲' : '▼'} {Math.abs(data.change)}%
+      </span>
     </div>
   );
 }
+
+// Memoize for performance
+export default memo(KpiCard);

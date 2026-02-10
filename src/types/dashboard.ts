@@ -1,5 +1,5 @@
 export interface KPI {
   title: string;
-  value: string;
+  value: number; // number type now
   change: number;
 }

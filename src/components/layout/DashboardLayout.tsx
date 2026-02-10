@@ -17,7 +17,6 @@ export default function DashboardLayout({ children }: Props) {
 
       <div className="flex-1">
         <Header toggleSidebar={() => setIsOpen(!isOpen)} />
-
         <main className="p-6">
           {children}
         </main>

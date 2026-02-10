@@ -1,3 +1,5 @@
+import ThemeToggle from "../ui/ThemeToggle";
+
 interface HeaderProps {
   toggleSidebar: () => void;
 }
@@ -21,7 +23,7 @@ export default function Header({ toggleSidebar }: HeaderProps) {
       {/* Right */}
       <div className="flex items-center gap-4">
         <span className="cursor-pointer">🔔</span>
-
+        <ThemeToggle />
         <div className="flex items-center gap-2 cursor-pointer">
           <div className="w-8 h-8 rounded-full bg-gray-300" />
           <span className="hidden sm:block">Admin</span>
